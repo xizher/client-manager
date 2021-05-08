@@ -1,18 +1,21 @@
 <template>
-  <div class="view-main">
-    <RouterView class="content" />
-    <BottomNav class="nav" />
-  </div>
+  <v-bottom-navigation v-model="selectedKey">
+    <v-btn
+      v-for="item in navItems"
+      :key="item.path"
+      :value="item.path"
+    >
+      <span>{{ item.alias }}</span>
+    </v-btn>
+  </v-bottom-navigation>
 </template>
 
 <script>
 import { defineComponent, ref, watchEffect } from '@vue/composition-api'
-import BottomNav from '~/components/BottomNav.vue'
 import { config } from '~/config/app.config'
 import { useRouter } from '~/hooks/router.hooks'
 
 export default defineComponent({
-  components: { BottomNav },
   setup () {
     const { navConfig } = config
     const navItems = navConfig.items
@@ -27,15 +30,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.view-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  .content {
-    flex: 1;
-  }
-  .nav {
-    margin-top: auto;
-  }
-}
+
 </style>

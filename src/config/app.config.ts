@@ -3,7 +3,14 @@ export const config = {
   routerConfig: {
     routesConfig: [
       { name: 'login' },
-      { name: 'main' },
+      {
+        name: 'main',
+          children: [
+            { name: 'main/home' },
+            { name: 'main/blog' },
+            { path: '/main', redirect: '/main/home' },
+        ]
+      },
       { path: '/', redirect: '/main' },
     ],
     mode: 'hash',
@@ -11,6 +18,13 @@ export const config = {
   serviceConfig: {
     timeout: 8000,
     withCookie: true,
+  },
+  navConfig: {
+    items: [
+      { path: '/main/home', alias: '主页' },
+      { path: '/main/blog', alias: '文档' },
+    ],
+    defaultPath: 0
   },
 }
 
