@@ -1,0 +1,2 @@
+# client-manager
+my manager
