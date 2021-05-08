@@ -6,7 +6,15 @@ import path from 'path'
 export default defineConfig({
   base: './',
   server: {
-    port: 8080
+    port: 8080,
+    proxy: {
+      '/api': {
+        // target: 'https://wuxizhe.fun/api',
+        target: 'http://localhost:3000/api',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, '')
+      },
+    },
   },
   resolve: {
     alias: {
