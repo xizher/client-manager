@@ -28,17 +28,19 @@ import { defineComponent, reactive, toRefs } from '@vue/composition-api'
 import { storageUtils } from '@xizher/js-utils'
 import { useRouter } from '~/hooks/router.hooks'
 import { serivceLogin } from '~/services/account.service'
+import { useMessage } from '~hooks/message.hooks'
 
 export default defineComponent({
   setup () {
     storageUtils.local.remove('account').remove('token')
     const router = useRouter()
+    const message = useMessage()
     const state = reactive({
       account: '', password: '',
       login () {
         serivceLogin(state.account, state.password).then(res => {
           if (!res.data.success) {
-            // ...
+            message.show('用户名或密码错误')
           } else {
             storageUtils.local
               .set('account', res.data.account)

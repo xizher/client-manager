@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <router-view />
+    <MessageBar />
+    <RouterView />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineAsyncComponent, defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
+  components: {
+    MessageBar: defineAsyncComponent(() => import('~cp/MessageBar.vue'))
+  },
   setup () {
      //
   }
