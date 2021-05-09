@@ -17,6 +17,8 @@ const originalPush = VueRouter.prototype.push
 const { routesConfig, mode } = config.routerConfig
 Vue.use(VueRouter)
 
+const modules = import.meta.glob('../views/**/*.vue')
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseRoute (item: any) : RouteConfig {
   if (item.redirect && item.path) {
@@ -31,7 +33,7 @@ function parseRoute (item: any) : RouteConfig {
   return {
     name: item.name,
     path: `/${item.name}`,
-    component: () => import(`../views/${item.name}.view.vue`),
+    component: modules[`../views/${item.name}.view.vue`],
     children,
   }
 }
