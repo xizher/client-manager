@@ -10,7 +10,7 @@
     "@vue/composition-api": "^1.0.0-rc.8",
     "@xizher/axios": "^1.1.1",
     "@xizher/js-ext": "^1.0.1",
-    "@xizher/js-utils": "^1.1.2",
+    "@xizher/js-utils": "^1.1.3",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuetify": "^2.4.11"

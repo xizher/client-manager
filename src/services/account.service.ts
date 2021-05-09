@@ -1,12 +1,6 @@
 import { createAxios } from '@xizher/axios'
 import { cryptoUtils } from '@xizher/js-utils'
-import { getToken } from '.'
-
-interface ISerivceResult <T> {
-  code: string
-  data: T
-  error: any // eslint-disable-line @typescript-eslint/no-explicit-any
-}
+import { getToken, ISerivceResult } from '.'
 
 export interface AccountInfoDTO {
   id: string

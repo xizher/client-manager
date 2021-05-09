@@ -33,9 +33,11 @@ export default defineComponent({
   flex-direction: column;
   .content {
     flex: 1;
+    overflow: auto;
   }
   .nav {
     margin-top: auto;
+    overflow-x: auto;
   }
 }
 </style>

@@ -4,6 +4,21 @@ import { config } from '~/config/app.config'
 import { useMessage } from '~/hooks/message.hooks'
 import { useRouter } from '~/hooks/router.hooks'
 
+export interface ISerivceResult <T> {
+  code: string
+  data: T
+  error: any // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
+export class QueryListDTO {
+  readonly pageIndex?: number
+  readonly pageSize?: number
+  orders?: {
+    name: string
+    type: 'asc' | 'desc'
+  }[]
+}
+
 const { timeout, withCookie } = config.serviceConfig
 
 export function getToken () : string | null {

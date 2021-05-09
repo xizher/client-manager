@@ -8,6 +8,7 @@ export const config = {
           children: [
             { name: 'main/home' },
             { name: 'main/blog' },
+            { name: 'main/pwd' },
             { path: '/main', redirect: '/main/home' },
         ]
       },
@@ -22,9 +23,11 @@ export const config = {
   navConfig: {
     items: [
       { path: '/main/home', alias: '主页' },
-      { path: '/main/blog', alias: '文档' },
+      { path: '/main/blog', alias: '文档库' },
+      { path: '/main/pwd', alias: '口令备份库' },
+      { path: '/login', alias: '退出登录' },
     ],
-    defaultPath: 0
+    defaultPath: '/main/pwd'
   },
 }
 
