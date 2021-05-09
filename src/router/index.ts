@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { defineComponent } from '@vue/composition-api'
 import VueRouter, { RouteConfig, RouterMode } from 'vue-router'
 import { config } from '~/config/app.config'
 import { serviceCheck } from '~/services/account.service'
@@ -32,7 +31,7 @@ function parseRoute (item: any) : RouteConfig {
   return {
     name: item.name,
     path: `/${item.name}`,
-    component: defineComponent(() => import(`../views/${item.name}.view.vue`)),
+    component: () => import(`../views/${item.name}.view.vue`),
     children,
   }
 }
