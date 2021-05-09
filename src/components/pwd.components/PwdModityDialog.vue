@@ -51,7 +51,6 @@ export default defineComponent({
     const [, decrypto] = useCryptoKey()
     watch(() => props.item, item => {
       Object.keys(state).forEach(key => state[key].value = item[key])
-      console.log(decrypto(item.pwd))
       state.pwd.value = decrypto(item.pwd)
     })
     const handleCancel = () => emit('update:visible', false)
