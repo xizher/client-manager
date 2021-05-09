@@ -36,7 +36,7 @@
 
 <script>
 import { defineComponent, watch } from '@vue/composition-api'
-import { useModity } from '~/hooks/pwd.hooks'
+import { useCryptoKey, useModity } from '~/hooks/pwd.hooks'
 
 export default defineComponent({
   props: {
@@ -48,8 +48,11 @@ export default defineComponent({
   ],
   setup (props, { emit }) {
     const { submit, ...state } = useModity()
+    const [, decrypto] = useCryptoKey()
     watch(() => props.item, item => {
       Object.keys(state).forEach(key => state[key].value = item[key])
+      console.log(decrypto(item.pwd))
+      state.pwd.value = decrypto(item.pwd)
     })
     const handleCancel = () => emit('update:visible', false)
     const submitExec = () => {
