@@ -12,8 +12,8 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   components: {
     CryptoKeyInput: () => import('~/components/pwd.components/CryptoKeyInput.vue'),
-    PwdTable: () => import('~/components/pwd.components/PwdAddBtn.vue'),
-    PwdAddBtn: () => import('~/components/pwd.components/PwdTable.vue'),
+    PwdAddBtn: () => import('~/components/pwd.components/PwdAddBtn.vue'),
+    PwdTable: () => import('~/components/pwd.components/PwdTable.vue'),
   },
   setup () {
     return {
