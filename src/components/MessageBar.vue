@@ -11,7 +11,7 @@
         color="pink"
         text
         v-bind="attrs"
-        @click="snackbar = false"
+        @click="visible = false"
       >
         Close
       </v-btn>

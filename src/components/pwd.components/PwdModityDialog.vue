@@ -41,7 +41,7 @@ import { useCryptoKey, useModity } from '~/hooks/pwd.hooks'
 export default defineComponent({
   props: {
     visible: { type: Boolean, default: false },
-    item: { tyoe: Object, default: () => {} },
+    item: { type: Object, default: () => {} },
   },
   emits: [
     'update:visible'

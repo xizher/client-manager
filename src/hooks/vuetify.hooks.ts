@@ -2,6 +2,7 @@
 
 import { reactive, ToRefs, toRefs, watch } from '@vue/composition-api'
 import { DataOptions, DataTableHeader } from 'vuetify'
+import ext from '@xizher/js-ext'
 
 export interface ITableState<T> {
   headers: DataTableHeader[]
@@ -12,15 +13,16 @@ export interface ITableState<T> {
   loadDataSource () : void
 }
 
-export function useTable<T> (headers: DataTableHeader[], funcLoadDataSource: Function) : ToRefs<ITableState<T>> {
+export function useTable<T> (headers: DataTableHeader[], funcLoadDataSource: Function, options?: DataOptions) : ToRefs<ITableState<T>> {
   const tableState : ITableState<T> = reactive({
     headers,
-    options: {},
+    options: options ?? {},
     dataSource: [],
     total: 0,
     loading: false,
     loadDataSource () {
       tableState.loading = true
+      ext(tableState.dataSource).clear()
       const { page, itemsPerPage, sortBy, sortDesc } = tableState.options as DataOptions
       funcLoadDataSource({
         pageIndex: page - 1,

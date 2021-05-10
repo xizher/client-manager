@@ -85,7 +85,7 @@ export function useModity () : ToRefs<ModityPwdDTO> & { submit () : Promise<bool
       return true
     }
     console.warn(result)
-    message.show('修改成功')
+    message.show('修改失败')
     return false
   }
   return { ...toRefs(state), submit }
