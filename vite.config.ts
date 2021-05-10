@@ -3,6 +3,7 @@ import { createVuePlugin } from 'vite-plugin-vue2'
 import path from 'path'
 import viteCompression from 'vite-plugin-compression'
 import visualizer from 'rollup-plugin-visualizer'
+// import styleImport from 'vite-plugin-style-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,5 +35,16 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
+    // styleImport({
+    //   libs: [
+    //     {
+    //       libraryName: 'vuetify/lib',
+    //       esModule: true,
+    //       resolveStyle: (name) => {
+    //         return `vuetify/src/components/${name}/${name}.scss`
+    //       },
+    //     }
+    //   ]
+    // }),
   ]
 })

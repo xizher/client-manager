@@ -27,7 +27,7 @@ export const config = {
       { path: '/main/pwd', alias: '口令备份库' },
       { path: '/login', alias: '退出登录' },
     ],
-    defaultPath: '/main/blog'
+    defaultPath: '/main/home'
   },
 }
 
