@@ -10,20 +10,32 @@
       :items="dataSource"
       :loading="loading"
     >
-      <template #item.pwd="{ item }">
+      <template #[`item.pwd`]="{ item }">
         {{ item.show ? decrypto(item.pwd) : '******************' }}
       </template>
-      <template #item.actions="{ item }">
-        <v-btn @click="deleteById(item.id)">
+      <template #[`item.actions`]="{ item }">
+        <v-btn
+          small
+          @click="showDeleteDialog(item.id)"
+        >
           删除
         </v-btn>
-        <v-btn @click="modity(item)">
+        <v-btn
+          small
+          @click="modity(item)"
+        >
           编辑
         </v-btn>
-        <v-btn @click="item.show = !(!!item.show)">
+        <v-btn
+          small
+          @click="item.show = !(!!item.show)"
+        >
           {{ item.show ? '加密' : '解密' }}
         </v-btn>
-        <v-btn @click="copy(decrypto(item.pwd))">
+        <v-btn
+          small
+          @click="copy(decrypto(item.pwd))"
+        >
           复制
         </v-btn>
       </template>
@@ -32,6 +44,32 @@
       :visible.sync="modityVisible"
       :item="modityItem"
     />
+    <v-dialog
+      v-model="deleteVisible"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title>
+          提醒
+        </v-card-title>
+        <v-card-text>确认删除？</v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            text
+            @click="deleteExec"
+          >
+            确认
+          </v-btn>
+          <v-btn
+            text
+            @click="deleteVisible = false"
+          >
+            取消
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -53,8 +91,18 @@ export default defineComponent({
       modityVisible.value = true
       modityItem.value = item
     }
+    const deleteVisible = ref(false)
+    const deleteId = ref('')
+    const showDeleteDialog = id => {
+      deleteId.value = id
+      deleteVisible.value = true
+    }
+    const deleteExec = () => {
+      deleteById(deleteId.value)
+      deleteVisible.value = false
+    }
     return {
-      ...useList(), decrypto, copy, deleteById, modityVisible, modity, modityItem
+      ...useList(), decrypto, copy, deleteExec, modityVisible, modity, modityItem, deleteVisible, showDeleteDialog
     }
   }
 })
