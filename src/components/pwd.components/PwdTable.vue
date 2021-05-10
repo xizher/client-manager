@@ -77,10 +77,11 @@
 import { defineComponent, ref } from '@vue/composition-api'
 import { useCryptoKey, useDelete, useList } from '~/hooks/pwd.hooks'
 import { baseUtils } from '@xizher/js-utils'
-import PwdModityDialog from './PwdModityDialog.vue'
 
 export default defineComponent({
-  components: { PwdModityDialog },
+  components: {
+    PwdModityDialog: () => import('./PwdModityDialog.vue')
+  },
   setup () {
     const [, decrypto] = useCryptoKey()
     const copy = pwd => baseUtils.copyText(pwd)

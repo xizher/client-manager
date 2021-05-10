@@ -7,12 +7,13 @@
 
 <script>
 import { defineComponent, ref, watchEffect } from '@vue/composition-api'
-import BottomNav from '~/components/BottomNav.vue'
 import { config } from '~/config/app.config'
 import { useRouter } from '~/hooks/router.hooks'
 
 export default defineComponent({
-  components: { BottomNav },
+  components: {
+    BottomNav: () => import('~/components/BottomNav.vue')
+  },
   setup () {
     const { navConfig } = config
     const navItems = navConfig.items

@@ -87,11 +87,10 @@
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
 import { useCreate } from '~/hooks/blog.hooks'
-import MarkdownEditor from '../base/MarkdownEditor.vue'
 
 export default defineComponent({
   components: {
-    MarkdownEditor
+    MarkdownEditor: () => import('../base/MarkdownEditor.vue')
   },
   props: {
     visible: { type: Boolean, default: false }

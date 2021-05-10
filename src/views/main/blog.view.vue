@@ -6,11 +6,10 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import BlogTable from '~/components/blog.components/BlogTable.vue'
 
 export default defineComponent({
   components: {
-    BlogTable,
+    BlogTable: () => import('~/components/blog.components/BlogTable.vue'),
   },
   setup () {
     return {

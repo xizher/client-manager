@@ -50,13 +50,11 @@
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
 import { useList, useModity } from '~/hooks/blog.hooks'
-import BlogAddDialog from './BlogAddDialog.vue'
-import BlogModityDialog from './BlogModityDialog.vue'
 
 export default defineComponent({
   components: {
-    BlogAddDialog,
-    BlogModityDialog,
+    BlogAddDialog: () => import('./BlogAddDialog.vue'),
+    BlogModityDialog: () => import('./BlogModityDialog.vue'),
   },
   setup () {
     const blogAddDialogVisible = ref(false)

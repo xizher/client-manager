@@ -4,10 +4,11 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import LoginWarp from '~/components/LoginWarp.vue'
 
 export default defineComponent({
-  components: { LoginWarp },
+  components: {
+    LoginWarp: () => import('~/components/LoginWarp.vue')
+  },
   setup () {
     return {
 
