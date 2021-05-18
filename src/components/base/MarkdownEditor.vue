@@ -20,6 +20,11 @@ import 'codemirror/addon/scroll/simplescrollbars.css'
 import 'codemirror/lib/codemirror.css'
 VMdEditor.Codemirror = Codemirror
 VMdEditor.use(githubTheme)
+VMdEditor.xss.extend({
+  whiteList: {
+    iframe: ['src', 'width', 'height', 'frameborder', 'allowpaymentrequest', 'allowtransparency', 'scrolling', 'loading', 'title', 'style'],
+  },
+})
 
 export default defineComponent({
   components: {
